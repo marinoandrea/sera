@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.0"
+  xmlns="http://www.w3.org/2001/vxml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd">
+
+  <var name="language" expr="en" />
+  <var name="mainCategory" expr="gombo" />
+  <var name="subCategory" expr="keleya" />
+  <var name="quantityKg" expr="" />
+  <var name="totPrice" expr="" />
+
+  <menu id="index_menu">
+    <property name="inputmodes" value="dtmf"/>
+
+    <prompt>
+      <!-- audio src="/audio/EN/welcome.wav"/-->
+      Welcome to Sera! For English audio press 1, for French audio press 2.
+      <break />
+      <audio src="/audio/FR/welcome.wav"/>
+    </prompt>
+
+    <choice dtmf="1" next="#assign_language_en"/>
+    <choice dtmf="2" next="#assign_language_fr"/>
+    <choice dtmf="#" next="#index_menu"/>
+    <choice dtmf="*" next="#exit"/>
+  </menu>
+
+  <form id="assign_language_en">
+    <block>
+      <assign value="en" name="language" />
+      <goto next="category.xml" />
+    </block>
+  </form>
+
+  <form id="assign_language_fr">
+    <block>
+      <assign value="fr" name="language" />
+      <goto next="category.xml" />
+    </block>
+  </form>
+
+  <form id="exit">
+    <block>
+      <exit />
+    </block>
+  </form>
+
+
+</vxml>

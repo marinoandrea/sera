@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.0"
+    xmlns="http://www.w3.org/2001/vxml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd">
+
+
+    <menu id="review_menu">
+        <property name="inputmodes" value="dtmf"/>
+
+        <prompt>
+            <!-- audio src="/audio/EN/review_category.wav"/-->
+            You have selected the category:            
+            <value expr="category"/>
+            <break />
+            <!-- audio src="/audio/EN/review_subcategory.wav"/-->
+            You have selected the subcategory:            
+            <value expr="subcategory"/>
+            <break />
+            <!-- audio src="/audio/EN/review_quantity.wav"/-->
+            You have selected the quantity:            
+            <value expr="quantityKg"/>
+            <break />
+            <!-- audio src="/audio/EN/review_price.wav"/-->
+            You have selected the price:            
+            <value expr="totPrice"/>
+            <break />
+            To confirm press 1
+            <break />
+            To listen again press the Hashtag
+            <break />
+            To go back press the Asterisk
+        </prompt>
+
+        <choice dtmf="1" next="#send"/>
+        <choice dtmf="#" next="#review_menu"/>
+        <choice dtmf="*" next="price.xml"/>
+    </menu>
+
+    <form id="send">
+        <block>
+            <exit />
+        </block>
+    </form>
+
+</vxml>

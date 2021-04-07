@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.0"
+    xmlns="http://www.w3.org/2001/vxml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd">
+
+    <property name="inputmodes" value="dtmf"/>
+
+    <form id="quantity_form">
+        <field name="quantity">
+            <property name="termchar" value="#"/>
+            <grammar mode="dtmf" version="1.0" root="quantitySequence">
+                <rule id="quantitySequence" scope="public">
+                    <one-of>
+                        <item repeat="0-">
+                            <one-of>
+                                <item>0</item>
+                                <item>1</item>
+                                <item>2</item>
+                                <item>3</item>
+                                <item>4</item>
+                                <item>5</item>
+                                <item>6</item>
+                                <item>7</item>
+                                <item>8</item>
+                                <item>9</item>
+                            </one-of>
+                        </item>
+                    </one-of>
+                </rule>
+            </grammar>
+
+            <prompt>
+                <if cond="language == 'en'">
+                    <!-- audio src="/audio/EN/quantity.wav"/-->
+                    How many kilos do you want to sell?
+                    <elseif cond="language == 'fr'" />
+                    <audio src="/audio/FR/quantity.wav"/>
+                </if>
+            </prompt>
+
+            <filled>
+                <assign expr="quantity" name="quantityKg" />
+                <goto next="price.xml" />
+            </filled>
+        </field>
+    </form>
+
+</vxml>
