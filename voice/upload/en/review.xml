@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml version="2.0"
-    xmlns="http://www.w3.org/2001/vxml"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd">
+<vxml version="2.1" application="root.xml">
 
 
-    <menu id="review_menu">
+    <menu>
         <property name="inputmodes" value="dtmf"/>
 
-        <prompt>
+        <prompt xml:lang="en-gb">
             <!-- audio src="/audio/EN/review_category.wav"/-->
             You have selected the category:            
-            <value expr="category"/>
+            <value expr="application.category"/>
             <break />
             <!-- audio src="/audio/EN/review_subcategory.wav"/-->
             You have selected the subcategory:            
-            <value expr="subcategory"/>
+            <value expr="application.subCategory"/>
             <break />
             <!-- audio src="/audio/EN/review_quantity.wav"/-->
             You have selected the quantity:            
-            <value expr="quantityKg"/>
+            <value expr="application.quantityKg"/>
             <break />
             <!-- audio src="/audio/EN/review_price.wav"/-->
             You have selected the price:            
-            <value expr="totPrice"/>
+            <value expr="application.totPrice"/>
             <break />
-            To confirm press 1
-            <break />
-            To listen again press the Hashtag
-            <break />
-            To go back press the Asterisk
+            To confirm press 1,
+            To listen again press the Hashtag,
+            To go back press the Asterisk.
         </prompt>
 
         <choice dtmf="1" next="#send"/>
-        <choice dtmf="#" next="#review_menu"/>
+        <choice dtmf="#" next="#reprompt"/>
         <choice dtmf="*" next="price.xml"/>
     </menu>
 
+    <form id="reprompt">
+        <block>
+            <reprompt />
+        </block>
+    </form>
+
+
     <form id="send">
+        <prompt xml:lang="en-gb">
+            <!-- audio src="/audio/EN/review_end.wav"/-->
+            Your announcement has been uploaded! Thank your for using Sera!
+        </prompt>
         <block>
             <exit />
         </block>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1" application="root.xml">
+
+    <menu>
+        <property name="inputmodes" value="dtmf"/>
+
+        <prompt xml:lang="en-gb">
+            <!-- audio src="/audio/EN/category.wav"/ -->
+          What category of seed do you want to sell?
+          For Fonio press 1,
+          For Gombo press 2,
+          For Mais press 3,
+          For Sorgho press 4.
+        </prompt>
+
+        <choice dtmf="1" next="#assign_category_fonio"/>
+        <choice dtmf="2" next="#assign_category_gombo"/>
+        <choice dtmf="3" next="#assign_category_mais"/>
+        <choice dtmf="4" next="#assign_category_sorgho" />
+    </menu>
+
+    <form id="assign_category_fonio">
+        <block>
+            <assign expr="'fonio'" name="application.category" />
+            <goto next="subcategory_fonio.xml" />
+        </block>
+    </form>
+
+    <form id="assign_category_gombo">
+        <block>
+            <assign expr="'gombo'" name="application.category" />
+            <goto next="subcategory_gombo.xml" />
+        </block>
+    </form>
+
+    <form id="assign_category_mais">
+        <block>
+            <assign expr="'mais'" name="application.category" />
+            <goto next="subcategory_mais.xml" />
+        </block>
+    </form>
+
+    <form id="assign_category_sorgho">
+        <block>
+            <assign expr="'sorgho'" name="application.category" />
+            <goto next="subcategory_sorgho.xml" />
+        </block>
+    </form>
+
+</vxml>

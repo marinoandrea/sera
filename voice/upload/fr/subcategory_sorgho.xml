@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1" application="root.xml">
+
+    <menu id="subcategory_menu">
+        <property name="inputmodes" value="dtmf"/>
+
+        <prompt xml:lang="fr-fr">
+            <!-- audio src="/audio/FR/subcategory_sorgho.wav"/-->
+            Quel type de Sorgho voulez-vous vendre ?
+            Pour Toroba, tapez 1,
+            Pour Bobodje, tapez 2,
+            Pour Tieblen, tapez 3,
+            Pour revenir en arrière, appuyez sur le Hashtag.
+        </prompt>
+
+        <choice dtmf="1" next="#assign_subcategory_1"/>
+        <choice dtmf="2" next="#assign_subcategory_2"/>
+        <choice dtmf="3" next="#assign_subcategory_3"/>
+        <choice dtmf="4" next="#assign_subcategory_other" />
+        <choice dtmf="*" next="category.xml"/>
+    </menu>
+
+    <form id="assign_subcategory_1">
+        <block>
+            <assign expr="'Toroba'" name="application.subCategory" />
+            <goto next="quantity.xml" />
+        </block>
+    </form>
+
+    <form id="assign_subcategory_2">
+        <block>
+            <assign expr="'Bobodje'" name="application.subCategory" />
+            <goto next="quantity.xml" />
+        </block>
+    </form>
+
+    <form id="assign_subcategory_3">
+        <block>
+            <assign expr="'Tieblen' Konkountre" name="application.subCategory" />
+            <goto next="quantity.xml" />
+        </block>
+    </form>
+
+    <form id="assign_subcategory_other">
+        <block>
+            <assign expr="'other'" name="application.subCategory" />
+            <goto next="quantity.xml" />
+        </block>
+    </form>
+
+</vxml>

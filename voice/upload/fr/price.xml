@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml version="2.0"
-    xmlns="http://www.w3.org/2001/vxml"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd">
+<vxml version="2.1" application="root.xml">
 
     <property name="inputmodes" value="dtmf"/>
 
-    <form id="quantity_form">
-        <field name="quantity">
+    <form id="price_form">
+        <field name="price">
             <property name="termchar" value="#"/>
-            <grammar mode="dtmf" version="1.0" root="quantitySequence">
-                <rule id="quantitySequence" scope="public">
+            <grammar mode="dtmf" version="1.0" root="priceSequence">
+                <rule id="priceSequence" scope="public">
                     <one-of>
                         <item repeat="0-">
                             <one-of>
@@ -29,18 +27,16 @@
                 </rule>
             </grammar>
 
-            <prompt>
-                <if cond="language == 'en'">
-                    <!-- audio src="/audio/EN/quantity.wav"/-->
-                    How many kilos do you want to sell?
-                    <elseif cond="language == 'fr'" />
-                    <audio src="/audio/FR/quantity.wav"/>
-                </if>
+            <prompt xml:lang="fr-fr">
+                <!--audio src="/audio/EN/price.wav"/-->
+                À quel prix voulez-vous vendre ?
+                <break />
+                Insérez le prix, puis appuyez sur le HashTag.
             </prompt>
 
             <filled>
-                <assign expr="quantity" name="quantityKg" />
-                <goto next="price.xml" />
+                <assign expr="price" name="application.totPrice" />
+                <goto next="review.xml" />
             </filled>
         </field>
     </form>
