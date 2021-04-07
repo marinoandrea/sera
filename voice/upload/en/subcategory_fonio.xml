@@ -9,7 +9,8 @@
             What type of Fonio do you want to sell?
             For Pon de Bore press 1,
             For Niatia press 2,
-            For Banco Konkountre press 3,
+            For Banco Konkountre press 3,            
+            For any Other type press 4,
             To go back, press the asterisk.
         </prompt>
 
