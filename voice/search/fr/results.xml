@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1" application="root.xml">
+   <menu>
+      <property name="inputmodes" value="dtmf" />
+      <prompt xml:lang="fr-fr">
+         <!-- audio src="/audio/FR/review_category.wav"/-->
+         Vous avez effectué la recherche suivante. Catégorie:
+         <value expr="application.category" />
+         <break />
+         <!-- audio src="/audio/FR/review_subcategory.wav"/-->
+         Sous-catégorie:
+         <value expr="application.subCategory" />
+         <break />
+         <!-- audio src="/audio/FR/review_quantitymin.wav"/-->
+         Quantité minimum:
+         <value expr="application.quantityLowerBound" />
+		 kilos
+         <break />
+         <!-- audio src="/audio/FR/review_quantitymax.wav"/-->
+         Quantité maximum:
+         <value expr="application.quantityUpperBound" />
+		 kilos
+         <break />
+         Pour écouter les résultats de votre recherche, appuyez sur 1. 
+		 Pour effectuer une nouvelle recherche, appuyez sur l'astérisque.
+      </prompt>
+      <choice dtmf="1" next="#listenresults" />
+      <choice dtmf="*" next="category.xml" />
+   </menu>
+   <form id="listenresults">
+      <block>
+         <prompt xml:lang="fr-fr">
+            <!-- audio src="/audio/FR/results.wav"/-->
+            Il existe une offre active correspondant à vos critères de recherche.
+            <break />
+            <value expr="application.quantityLowerBound" />
+            kilos de
+            <value expr="application.subCategory" />
+            pour le prix de 500 francs.
+         </prompt>
+		 <exit />
+      </block>
+   </form>
+</vxml>

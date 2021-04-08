@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1" application="root.xml">
+
+    <menu id="subcategory_menu">
+        <property name="inputmodes" value="dtmf"/>
+
+        <prompt xml:lang="fr-fr">
+            <!-- audio src="/audio/FR/subcategory_fonio.wav"/-->
+            Quel type de Gombo voulez-vous acheter ?
+            Pour Keleya appuyez sur 1,
+            Pour Sabalibougou appuyez sur 2,
+            Pour Gansourouni appuyez sur 3,
+            Pour tout autre type, appuyez sur 4,
+            Pour revenir en arrière, appuyez sur le Astérisque.
+        </prompt>
+
+        <choice dtmf="1" next="#assign_subcategory_1"/>
+        <choice dtmf="2" next="#assign_subcategory_2"/>
+        <choice dtmf="3" next="#assign_subcategory_3"/>
+        <choice dtmf="4" next="#assign_subcategory_other" />
+        <choice dtmf="*" next="category.xml"/>
+    </menu>
+
+    <form id="assign_subcategory_1">
+        <block>
+            <assign expr="'Keleya'" name="application.subCategory" />
+            <goto next="quantity_min.xml" />
+        </block>
+    </form>
+
+    <form id="assign_subcategory_2">
+        <block>
+            <assign expr="'Sabalibougou'" name="application.subCategory" />
+            <goto next="quantity_min.xml" />
+        </block>
+    </form>
+
+    <form id="assign_subcategory_3">
+        <block>
+            <assign expr="'Gansourouni'" name="application.subCategory" />
+            <goto next="quantity_min.xml" />
+        </block>
+    </form>
+
+    <form id="assign_subcategory_other">
+        <block>
+            <assign expr="'other'" name="application.subCategory" />
+            <goto next="quantity_min.xml" />
+        </block>
+    </form>
+
+</vxml>
