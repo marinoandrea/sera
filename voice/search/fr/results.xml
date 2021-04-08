@@ -14,15 +14,14 @@
          <!-- audio src="/audio/FR/review_quantitymin.wav"/-->
          Quantité minimum:
          <value expr="application.quantityLowerBound" />
-		 kilos
+         kilos
          <break />
          <!-- audio src="/audio/FR/review_quantitymax.wav"/-->
          Quantité maximum:
          <value expr="application.quantityUpperBound" />
-		 kilos
+         kilos
          <break />
-         Pour écouter les résultats de votre recherche, appuyez sur 1. 
-		 Pour effectuer une nouvelle recherche, appuyez sur l'astérisque.
+         Pour écouter les résultats de votre recherche, appuyez sur 1. Pour effectuer une nouvelle recherche, appuyez sur l'astérisque.
       </prompt>
       <choice dtmf="1" next="#listenresults" />
       <choice dtmf="*" next="category.xml" />
@@ -38,7 +37,7 @@
             <value expr="application.subCategory" />
             pour le prix de 500 francs.
          </prompt>
-		 <exit />
+         <exit />
       </block>
    </form>
 </vxml>
