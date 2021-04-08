@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<vxml version="2.1">
-    <var name="category" expr="'gombo'" />
-    <var name="subCategory" expr="'keleya'" />
-    <var name="quantityLowerBound" expr="''" />
-	<var name="quantityUpperBound" expr="''" />
-</vxml>
