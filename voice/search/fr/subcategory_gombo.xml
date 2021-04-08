@@ -11,7 +11,7 @@
             Pour Sabalibougou appuyez sur 2,
             Pour Gansourouni appuyez sur 3,
             Pour tout autre type, appuyez sur 4,
-            Pour revenir en arrière, appuyez sur le Astérisque.
+            Pour revenir en arrière, appuyez sur l'astérisque.
         </prompt>
 
         <choice dtmf="1" next="#assign_subcategory_1"/>
