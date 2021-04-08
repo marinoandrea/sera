@@ -14,12 +14,12 @@
          <!-- audio src="/audio/EN/review_quantitymin.wav"/-->
          Minimum quantity:
          <value expr="application.quantityLowerBound" />
-		 kilos
+         kilos
          <break />
          <!-- audio src="/audio/EN/review_quantitymax.wav"/-->
          Maximum quantity:
          <value expr="application.quantityUpperBound" />
-		 kilos
+         kilos
          <break />
          To listen the results of your search, press 1. To make a new search, press the Asterisk.
       </prompt>
@@ -37,7 +37,7 @@
             <value expr="application.subCategory" />
             for the price of 500 Francs.
          </prompt>
-		 <exit />
+         <exit />
       </block>
    </form>
 </vxml>
