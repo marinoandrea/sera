@@ -30,7 +30,6 @@
             <prompt xml:lang="fr-fr">
                 <!-- audio src="/audio/EN/quantity.wav"/-->
                 Combien de kilos voulez-vous vendre?
-                <break />
                 Insérez le montant, puis appuyez sur le HashTag.
             </prompt>
 
