@@ -39,10 +39,10 @@
     </form>
 
     <form id="send">
-        <prompt xml:lang="fr-fr">
-            Votre annonce a été téléchargée! Merci d'avoir utilisé Sera!
-        </prompt>
         <block>
+            <prompt xml:lang="fr-fr">
+            Votre annonce a été téléchargée! Merci d'avoir utilisé Sera!
+            </prompt>
             <exit />
         </block>
     </form>

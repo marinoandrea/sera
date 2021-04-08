@@ -40,11 +40,11 @@
 
 
     <form id="send">
-        <prompt xml:lang="en-gb">
-            <!-- audio src="/audio/EN/review_end.wav"/-->
-            Your announcement has been uploaded! Thank your for using Sera!
-        </prompt>
         <block>
+            <prompt xml:lang="en-gb">
+                <!-- audio src="/audio/EN/review_end.wav"/-->
+            Your announcement has been uploaded! Thank your for using Sera!
+            </prompt>
             <exit />
         </block>
     </form>
