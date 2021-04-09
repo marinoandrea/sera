@@ -5,7 +5,7 @@
         <property name="inputmodes" value="dtmf"/>
 
         <prompt xml:lang="en-gb">
-            <audio src="en/audio/category.wav" />
+            <audio src="audio/category.wav" />
         </prompt>
 
         <choice dtmf="1" next="#assign_category_fonio"/>

@@ -28,7 +28,7 @@
             </grammar>
 
             <prompt xml:lang="en-gb">
-                <audio src="en/audio/quantity_min.wav" />
+                <audio src="audio/quantity_min.wav" />
             </prompt>
 
             <filled>

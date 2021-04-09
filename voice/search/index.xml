@@ -24,11 +24,11 @@
     <log expr="'[' + Date.now().toString() + '] - Error: ' + _event" />
 
     <prompt xml:lang="en-gb">
-      <audio src="en/audio/error.wav" />
+      <audio src="audio/error.wav" />
     </prompt>
 
     <prompt xml:lang="fr-fr">
-      <audio src="fr/audio/error.wav" />
+      <audio src="audio/error.wav" />
     </prompt>
 
     <exit />
