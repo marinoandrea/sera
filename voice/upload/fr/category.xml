@@ -5,12 +5,7 @@
         <property name="inputmodes" value="dtmf"/>
 
         <prompt xml:lang="fr-fr">
-            <!-- audio src="/audio/FR/category.wav"/ -->
-            Quelle catégorie de semences voulez-vous vendre?
-            Pour Fonio, appuyez sur 1,
-            Pour Gombo appuyez sur 2,
-            Pour le Mais appuyez sur 3,
-            Pour Sorgho appuyez sur 4.
+            <audio src="/audio/fr/category.wav" />
         </prompt>
 
         <choice dtmf="1" next="#assign_category_fonio"/>

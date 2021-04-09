@@ -6,25 +6,19 @@
         <property name="inputmodes" value="dtmf"/>
 
         <prompt xml:lang="en-gb">
-            <!-- audio src="/audio/EN/review_category.wav"/-->
-            You have selected the category:            
+            <audio src="/audio/en/review_category.wav" />
             <value expr="application.category"/>
             <break />
-            <!-- audio src="/audio/EN/review_subcategory.wav"/-->
-            You have selected the subcategory:            
+            <audio src="/audio/en/review_subcategory.wav" />
             <value expr="application.subCategory"/>
             <break />
-            <!-- audio src="/audio/EN/review_quantity.wav"/-->
-            You have selected the quantity:            
+            <audio src="/audio/en/review_quantity.wav" />
             <value expr="application.quantityKg"/>
             <break />
-            <!-- audio src="/audio/EN/review_price.wav"/-->
-            You have selected the price:            
+            <audio src="/audio/en/review_price.wav" />
             <value expr="application.totPrice"/>
             <break />
-            To confirm press 1,
-            To listen again press the Hashtag,
-            To go back press the Asterisk.
+            <audio src="/audio/en/review_instructions.wav" />
         </prompt>
 
         <choice dtmf="1" next="#send"/>
@@ -42,8 +36,7 @@
     <form id="send">
         <block>
             <prompt xml:lang="en-gb">
-                <!-- audio src="/audio/EN/review_end.wav"/-->
-            Your announcement has been uploaded! Thank your for using Sera!
+                <audio src="/audio/en/review_sent.wav" />
             </prompt>
             <exit />
         </block>

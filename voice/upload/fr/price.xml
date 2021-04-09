@@ -28,9 +28,7 @@
             </grammar>
 
             <prompt xml:lang="fr-fr">
-                <!--audio src="/audio/EN/price.wav"/-->
-                À quel prix voulez-vous vendre ?
-                Insérez le prix, puis appuyez sur le HashTag.
+                <audio src="/audio/fr/price.wav" />
             </prompt>
 
             <filled>

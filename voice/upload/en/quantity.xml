@@ -28,9 +28,7 @@
             </grammar>
 
             <prompt xml:lang="en-gb">
-                <!-- audio src="/audio/EN/quantity.wav"/-->
-                How many kilos do you want to sell?
-                Insert the amount and then press the HashTag.
+                <audio src="/audio/en/quantity.wav" />
             </prompt>
 
             <filled>

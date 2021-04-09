@@ -5,13 +5,7 @@
         <property name="inputmodes" value="dtmf"/>
 
         <prompt xml:lang="en-gb">
-            <!-- audio src="/audio/EN/subcategory_fonio.wav"/-->
-            What type of Fonio do you want to sell?
-            For Pon de Bore press 1,
-            For Niatia press 2,
-            For Banco Konkountre press 3,            
-            For any Other type press 4,
-            To go back, press the asterisk.
+            <audio src="/audio/en/subcategory_fonio.wav" />
         </prompt>
 
         <choice dtmf="1" next="#assign_subcategory_1"/>

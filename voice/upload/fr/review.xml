@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version="2.1" application="root.xml">
 
-
     <menu>
         <property name="inputmodes" value="dtmf"/>
 
         <prompt xml:lang="fr-fr">
-            <!-- audio src="/audio/EN/review_category.wav"/-->
-            Vous avez sélectionné la catégorie:            
+            <audio src="/audio/fr/review_category.wav" />
             <value expr="application.category"/>
             <break />
-            <!-- audio src="/audio/EN/review_subcategory.wav"/-->
-            Vous avez sélectionné type:          
+            <audio src="/audio/fr/review_subcategory.wav" />
             <value expr="application.subCategory"/>
             <break />
-            <!-- audio src="/audio/EN/review_quantity.wav"/-->
-            Vous avez sélectionné la quantité:        
+            <audio src="/audio/fr/review_quantity.wav" />
             <value expr="application.quantityKg"/>
             <break />
-            <!-- audio src="/audio/EN/review_price.wav"/-->
-            Vous avez sélectionné le prix:        
+            <audio src="/audio/fr/review_price.wav" />
             <value expr="application.totPrice"/>
             <break />
-            Pour confirmer, appuyez sur 1,
-            Pour réécouter, appuyez sur le Hashtag,
-            Pour revenir en arrière, appuyez sur l'astérisque.
+            <audio src="/audio/fr/review_instructions.wav" />
         </prompt>
 
         <choice dtmf="1" next="#send"/>
@@ -41,7 +34,7 @@
     <form id="send">
         <block>
             <prompt xml:lang="fr-fr">
-            Votre annonce a été téléchargée! Merci d'avoir utilisé Sera!
+                <audio src="/audio/fr/review_sent.wav" />
             </prompt>
             <exit />
         </block>

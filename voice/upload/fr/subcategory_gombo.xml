@@ -5,13 +5,7 @@
         <property name="inputmodes" value="dtmf"/>
 
         <prompt xml:lang="fr-fr">
-            <!-- audio src="/audio/FR/subcategory_gombo.wav"/ -->
-            Quel type de Gombo voulez-vous vendre ?
-            Pour Keleya appuyez sur 1,
-            Pour Sabalibougou appuyez sur 2,
-            Pour Gansourouni appuyez sur 3,
-            Pour tout autre type, appuyez sur 4,
-            Pour revenir en arrière, appuyez sur l'astérisque.
+            <audio src="/audio/fr/subcategory_gombo.wav" />
         </prompt>
 
         <choice dtmf="1" next="#assign_subcategory_1"/>
