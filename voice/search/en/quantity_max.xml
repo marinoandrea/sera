@@ -28,9 +28,7 @@
             </grammar>
 
             <prompt xml:lang="en-gb">
-                <!-- audio src="/audio/EN/quantity.wav"/-->
-                How many kilos do you want to buy?
-                Please give the maximum amount and then press the HashTag.
+                <audio src="/audio/en/quantity_max.wav" />
             </prompt>
 
             <filled>

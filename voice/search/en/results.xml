@@ -3,25 +3,25 @@
    <menu>
       <property name="inputmodes" value="dtmf" />
       <prompt xml:lang="en-gb">
-         <!-- audio src="/audio/EN/review_category.wav"/-->
-         You made the following search. Category:
+         <audio src="/audio/en/results_category.wav" />
          <value expr="application.category" />
          <break />
-         <!-- audio src="/audio/EN/review_subcategory.wav"/-->
-         Subcategory:
+
+         <audio src="/audio/en/results_subcategory.wav" />
          <value expr="application.subCategory" />
          <break />
-         <!-- audio src="/audio/EN/review_quantitymin.wav"/-->
-         Minimum quantity:
+
+         <audio src="/audio/en/results_quantity_min.wav" />
          <value expr="application.quantityLowerBound" />
-         kilos
+         <audio src="/audio/en/kilos.wav" />
          <break />
-         <!-- audio src="/audio/EN/review_quantitymax.wav"/-->
-         Maximum quantity:
+
+         <audio src="/audio/en/results_quantity_max.wav" />
          <value expr="application.quantityUpperBound" />
-         kilos
+         <audio src="/audio/en/kilos.wav" />
          <break />
-         To listen the results of your search, press 1. To make a new search, press the Asterisk.
+
+         <audio src="/audio/en/results_quantity_instructions.wav" />
       </prompt>
       <choice dtmf="1" next="#listenresults" />
       <choice dtmf="*" next="category.xml" />
@@ -29,13 +29,12 @@
    <form id="listenresults">
       <block>
          <prompt xml:lang="en-gb">
-            <!-- audio src="/audio/EN/results.wav"/-->
-            There is one active offering fitting your search criteria.
+            <audio src="/audio/en/mock_result_1.wav" />
             <break />
             <value expr="application.quantityLowerBound" />
-            kilos of
+            <audio src="/audio/en/mock_result_2.wav" />
             <value expr="application.subCategory" />
-            for the price of 500 Francs.
+            <audio src="/audio/en/mock_result_3.wav" />
          </prompt>
          <exit />
       </block>

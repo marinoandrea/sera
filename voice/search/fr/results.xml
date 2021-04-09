@@ -3,25 +3,21 @@
    <menu>
       <property name="inputmodes" value="dtmf" />
       <prompt xml:lang="fr-fr">
-         <!-- audio src="/audio/FR/review_category.wav"/-->
-         Vous avez effectué la recherche suivante. Catégorie:
+         <audio src="/audio/fr/results_category.wav" />
          <value expr="application.category" />
          <break />
-         <!-- audio src="/audio/FR/review_subcategory.wav"/-->
-         Sous-catégorie:
+         <audio src="/audio/fr/results_subcategory.wav" />
          <value expr="application.subCategory" />
          <break />
-         <!-- audio src="/audio/FR/review_quantitymin.wav"/-->
-         Quantité minimum:
+         <audio src="/audio/fr/results_quantity_min.wav" />
          <value expr="application.quantityLowerBound" />
-         kilos
+         <audio src="/audio/fr/kilos.wav" />
          <break />
-         <!-- audio src="/audio/FR/review_quantitymax.wav"/-->
-         Quantité maximum:
+         <audio src="/audio/fr/results_quantity_max.wav" />
          <value expr="application.quantityUpperBound" />
-         kilos
+         <audio src="/audio/fr/kilos.wav" />
          <break />
-         Pour écouter les résultats de votre recherche, appuyez sur 1. Pour effectuer une nouvelle recherche, appuyez sur l'astérisque.
+         <audio src="/audio/fr/results_instructions.wav" />
       </prompt>
       <choice dtmf="1" next="#listenresults" />
       <choice dtmf="*" next="category.xml" />
@@ -29,13 +25,12 @@
    <form id="listenresults">
       <block>
          <prompt xml:lang="fr-fr">
-            <!-- audio src="/audio/FR/results.wav"/-->
-            Il existe une offre active correspondant à vos critères de recherche.
+            <audio src="/audio/fr/mock_result_1.wav" />
             <break />
             <value expr="application.quantityLowerBound" />
-            kilos de
+            <audio src="/audio/fr/mock_result_2.wav" />
             <value expr="application.subCategory" />
-            pour le prix de 500 francs.
+            <audio src="/audio/fr/mock_result_3.wav" />
          </prompt>
          <exit />
       </block>

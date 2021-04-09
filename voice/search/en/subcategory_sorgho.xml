@@ -5,13 +5,7 @@
         <property name="inputmodes" value="dtmf"/>
 
         <prompt xml:lang="en-gb">
-            <!-- audio src="/audio/EN/subcategory_fonio.wav"/-->
-            What type of Sorgho do you want to buy?
-            For Toroba press 1,
-            For Bobodje press 2,
-            For Tieblen press 3,
-            For any Other type press 4,
-            To go back, press the asterisk.
+            <audio src="/audio/en/subcategory_sorgho.wav" />
         </prompt>
 
         <choice dtmf="1" next="#assign_subcategory_1"/>
