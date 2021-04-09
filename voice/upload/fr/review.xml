@@ -5,19 +5,19 @@
         <property name="inputmodes" value="dtmf"/>
 
         <prompt xml:lang="fr-fr">
-            <audio src="/audio/fr/review_category.wav" />
+            <audio src="fr/audio/review_category.wav" />
             <value expr="application.category"/>
             <break />
-            <audio src="/audio/fr/review_subcategory.wav" />
+            <audio src="fr/audio/review_subcategory.wav" />
             <value expr="application.subCategory"/>
             <break />
-            <audio src="/audio/fr/review_quantity.wav" />
+            <audio src="fr/audio/review_quantity.wav" />
             <value expr="application.quantityKg"/>
             <break />
-            <audio src="/audio/fr/review_price.wav" />
+            <audio src="fr/audio/review_price.wav" />
             <value expr="application.totPrice"/>
             <break />
-            <audio src="/audio/fr/review_instructions.wav" />
+            <audio src="fr/audio/review_instructions.wav" />
         </prompt>
 
         <choice dtmf="1" next="#send"/>
@@ -34,7 +34,7 @@
     <form id="send">
         <block>
             <prompt xml:lang="fr-fr">
-                <audio src="/audio/fr/review_sent.wav" />
+                <audio src="fr/audio/review_sent.wav" />
             </prompt>
             <exit />
         </block>

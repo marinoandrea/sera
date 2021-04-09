@@ -3,21 +3,21 @@
    <menu>
       <property name="inputmodes" value="dtmf" />
       <prompt xml:lang="fr-fr">
-         <audio src="/audio/fr/results_category.wav" />
+         <audio src="fr/audio/results_category.wav" />
          <value expr="application.category" />
          <break />
-         <audio src="/audio/fr/results_subcategory.wav" />
+         <audio src="fr/audio/results_subcategory.wav" />
          <value expr="application.subCategory" />
          <break />
-         <audio src="/audio/fr/results_quantity_min.wav" />
+         <audio src="fr/audio/results_quantity_min.wav" />
          <value expr="application.quantityLowerBound" />
-         <audio src="/audio/fr/kilos.wav" />
+         <audio src="fr/audio/kilos.wav" />
          <break />
-         <audio src="/audio/fr/results_quantity_max.wav" />
+         <audio src="fr/audio/results_quantity_max.wav" />
          <value expr="application.quantityUpperBound" />
-         <audio src="/audio/fr/kilos.wav" />
+         <audio src="fr/audio/kilos.wav" />
          <break />
-         <audio src="/audio/fr/results_instructions.wav" />
+         <audio src="fr/audio/results_instructions.wav" />
       </prompt>
       <choice dtmf="1" next="#listenresults" />
       <choice dtmf="*" next="category.xml" />
@@ -25,12 +25,12 @@
    <form id="listenresults">
       <block>
          <prompt xml:lang="fr-fr">
-            <audio src="/audio/fr/mock_result_1.wav" />
+            <audio src="fr/audio/mock_result_1.wav" />
             <break />
             <value expr="application.quantityLowerBound" />
-            <audio src="/audio/fr/mock_result_2.wav" />
+            <audio src="fr/audio/mock_result_2.wav" />
             <value expr="application.subCategory" />
-            <audio src="/audio/fr/mock_result_3.wav" />
+            <audio src="fr/audio/mock_result_3.wav" />
          </prompt>
          <exit />
       </block>

@@ -5,11 +5,11 @@
     <property name="inputmodes" value="dtmf"/>
 
     <prompt xml:lang="en-gb">
-      <audio src="/audio/en/welcome.wav" />
+      <audio src="en/audio/welcome.wav" />
     </prompt>
 
     <prompt xml:lang="fr-fr">
-      <audio src="/audio/fr/welcome.wav" />
+      <audio src="fr/audio/welcome.wav" />
     </prompt>
 
     <choice dtmf="1" next="en/category.xml" />
@@ -24,11 +24,11 @@
     <log expr="'[' + Date.now().toString() + '] - Error: ' + _event" />
 
     <prompt xml:lang="en-gb">
-      <audio src="/audio/en/error.wav" />
+      <audio src="en/audio/error.wav" />
     </prompt>
 
     <prompt xml:lang="fr-fr">
-      <audio src="/audio/fr/error.wav" />
+      <audio src="fr/audio/error.wav" />
     </prompt>
 
     <exit />
