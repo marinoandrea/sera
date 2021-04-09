@@ -5,14 +5,12 @@
     <property name="inputmodes" value="dtmf"/>
 
     <prompt xml:lang="en-gb">
-      <!-- audio src="/audio/EN/welcome.wav"/-->
       Welcome to Sera! 
       For English audio press 1, 
       for French audio press 2.
     </prompt>
 
     <prompt xml:lang="fr-fr">
-      <!-- audio src="/audio/FR/welcome.wav"/-->
       Bienvenue à Sera! 
       Pour l'audio anglais, appuyez sur 1, 
       pour l'audio français appuyez sur 2.
@@ -21,5 +19,23 @@
     <choice dtmf="1" next="en/category.xml" />
     <choice dtmf="2" next="fr/category.xml" />
   </menu>
+
+  <catch event="connection.disconnect.hangup">
+    <exit/>
+  </catch>
+
+  <error>
+    <log expr="'[' + Date.now().toString() + '] - Error: ' + _event" />
+
+    <prompt xml:lang="en-gb">
+      Something went wrong, try again later.
+    </prompt>
+
+    <prompt xml:lang="fr-fr">
+      Quelque chose s'est mal passé, réessayez plus tard.
+    </prompt>
+
+    <exit />
+  </error>
 
 </vxml>

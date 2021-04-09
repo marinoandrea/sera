@@ -22,4 +22,22 @@
     <choice dtmf="2" next="fr/category.xml" />
   </menu>
 
+  <catch event="connection.disconnect.hangup">
+    <exit/>
+  </catch>
+
+  <error>
+    <log expr="'[' + Date.now().toString() + '] - Error: ' + _event" />
+
+    <prompt xml:lang="en-gb">
+      Something went wrong, try again later.
+    </prompt>
+
+    <prompt xml:lang="fr-fr">
+      Quelque chose s'est mal passé, réessayez plus tard.
+    </prompt>
+
+    <exit />
+  </error>
+
 </vxml>
