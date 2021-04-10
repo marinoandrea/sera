@@ -14,7 +14,7 @@ gtts-cli "You have selected the category:" --output en/audio/review_category.mp3
 gtts-cli "You have selected the subcategory:" --output en/audio/review_subcategory.mp3;
 gtts-cli "You have selected the quantity:" --output en/audio/review_quantity.mp3;
 gtts-cli "You have selected the price:" --output en/audio/review_price.mp3;
-gtts-cli "To confirm press 1, To go back press the Asterisk." --output en/audio/review_instructions.mp3;
+gtts-cli "To confirm press 1, To start again press the Asterisk." --output en/audio/review_instructions.mp3;
 gtts-cli "Your announcement has been uploaded! Thank your for using Sera!" --output en/audio/review_sent.mp3;
 # - misc
 gtts-cli "kilos" --output en/audio/kilos.mp3;
@@ -35,7 +35,7 @@ gtts-cli "Vous avez sélectionné la catégorie:" --lang fr --output fr/audio/re
 gtts-cli "Vous avez sélectionné type:" --lang fr --output fr/audio/review_subcategory.mp3;
 gtts-cli "Vous avez sélectionné la quantité:" --lang fr --output fr/audio/review_quantity.mp3;
 gtts-cli "Vous avez sélectionné le prix:" --lang fr --output fr/audio/review_price.mp3;
-gtts-cli "Pour confirmer, appuyez sur 1, Pour revenir en arrière, appuyez sur l'astérisque." --lang fr --output fr/audio/review_instructions.mp3;
+gtts-cli "Pour confirmer, appuyez sur 1, Pour recommencer, appuyez sur l'astérisque." --lang fr --output fr/audio/review_instructions.mp3;
 gtts-cli "Votre annonce a été téléchargée! Merci d'avoir utilisé Sera!" --lang fr --output fr/audio/review_sent.mp3;
 # - misc
 gtts-cli "kilos" --lang fr --output fr/audio/kilos.mp3;

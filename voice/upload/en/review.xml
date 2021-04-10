@@ -22,7 +22,7 @@
         </prompt>
 
         <choice dtmf="1" next="#send"/>
-        <choice dtmf="*" next="price.xml"/>
+        <choice dtmf="*" next="category.xml"/>
     </menu>
 
     <form id="send">
