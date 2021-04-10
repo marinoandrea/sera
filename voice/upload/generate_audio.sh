@@ -3,7 +3,7 @@
 echo generating EN audio...
 # english
 gtts-cli 'Welcome to Sera! For English audio press 1, for French audio press 2.' --output en/audio/welcome.mp3
-gtts-cli 'What type of seed do you want to sell? For Fonio press 1, for Rice press 2, for Mais press 3, for Sorghum press 4.' --output en/audio/category.mp3
+gtts-cli 'What type of seed do you want to sell? For Millet press 1, for Rice press 2, for Mais press 3, for Sorghum press 4.' --output en/audio/category.mp3
 gtts-cli "What type of Millet do you want to sell? For Pon de Bore press 1, For Niatia press 2, For Banco Konkountre press 3, For any Other type press 4, To go back, press the asterisk." --output en/audio/subcategory_fonio.mp3;
 gtts-cli "What type of Rice do you want to sell? For Gambiaka press 1, For Shwetassoke press 2, For Nerica press 3, For any Other type press 4, To go back, press the asterisk." --output en/audio/subcategory_rice.mp3;
 gtts-cli "What type of Mais do you want to sell? For Sotubaka press 1, For Nieleni press 2, For Dembaniouma press 3, For any Other type press 4, To go back, press the asterisk." --output en/audio/subcategory_mais.mp3;
