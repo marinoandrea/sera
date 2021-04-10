@@ -3,9 +3,9 @@
 echo generating EN audio...
 # english
 gtts-cli 'Welcome to Sera! For English audio press 1, for French audio press 2.' --output en/audio/welcome.mp3
-gtts-cli 'What type of seed do you want to buy? For Fonio press 1, for Gombo press 2, for Mais press 3, for Sorgho press 4.' --output en/audio/category.mp3
+gtts-cli 'What type of seed do you want to buy? For Fonio press 1, for rice press 2, for Mais press 3, for Sorgho press 4.' --output en/audio/category.mp3
 gtts-cli "What type of Fonio do you want to buy? For Pon de Bore press 1, For Niatia press 2, For Banco Konkountre press 3, For any Other type press 4, To go back, press the asterisk." --output en/audio/subcategory_fonio.mp3;
-gtts-cli "What type of Gombo do you want to buy? For Keleya press 1, For Sabalibougou press 2, For Gansourouni press 3, For any Other type press 4, To go back, press the asterisk." --output en/audio/subcategory_gombo.mp3;
+gtts-cli "What type of rice do you want to buy? For Gambiaka press 1, For Shwetassoke press 2, For Nerica press 3, For any Other type press 4, To go back, press the asterisk." --output en/audio/subcategory_rice.mp3;
 gtts-cli "What type of Mais do you want to buy? For Sotubaka press 1, For Nieleni press 2, For Dembaniouma press 3, For any Other type press 4, To go back, press the asterisk." --output en/audio/subcategory_mais.mp3;
 gtts-cli "What type of Sorgho do you want to buy? For Toroba press 1, For Bobodje press 2, For Tieblen press 3, For any Other type press 4, To go back, press the asterisk." --output en/audio/subcategory_sorgho.mp3;
 gtts-cli "How many kilos do you want to buy? Please give the minimum amount and then press the HashTag." --output en/audio/quantity_min.mp3;
@@ -27,9 +27,9 @@ echo OK
 echo generating FR audio...
 # french
 gtts-cli "Bienvenue à Sera! Pour l'audio anglais, appuyez sur 1, pour l'audio français appuyez sur 2." --lang fr --output fr/audio/welcome.mp3
-gtts-cli "Quel type de semences voulez-vous acheter ? Pour Fonio appuyez sur 1, pour Gombo appuyez sur 2, pour Mais appuyez sur 3, pour Sorgho appuyez sur 4." --lang fr --output fr/audio/category.mp3 
+gtts-cli "Quel type de semences voulez-vous acheter ? Pour Fonio appuyez sur 1, pour riz appuyez sur 2, pour Mais appuyez sur 3, pour Sorgho appuyez sur 4." --lang fr --output fr/audio/category.mp3 
 gtts-cli "Quel type de Fonio voulez-vous acheter ? Pour Pon de Bore appuyez sur 1, Pour Niatia appuyez sur 2, Pour Banco Konkountre pressez 3, Pour tout autre type, appuyez sur 4, Pour revenir en arrière, appuyez sur l'astérisque." --lang fr --output fr/audio/subcategory_fonio.mp3;
-gtts-cli "Quel type de Gombo voulez-vous acheter ? Pour Keleya appuyez sur 1, Pour Sabalibougou appuyez sur 2, Pour Gansourouni pressez 3, Pour tout autre type, appuyez sur 4, Pour revenir en arrière, appuyez sur l'astérisque." --lang fr --output fr/audio/subcategory_gombo.mp3;
+gtts-cli "Quel type de riz voulez-vous acheter ? Pour Gambiaka appuyez sur 1, Pour Shwetassoke appuyez sur 2, Pour Nerica pressez 3, Pour tout autre type, appuyez sur 4, Pour revenir en arrière, appuyez sur l'astérisque." --lang fr --output fr/audio/subcategory_rice.mp3;
 gtts-cli "Quel type de Mais voulez-vous acheter ? Pour Sotubaka appuyez sur 1, Pour Nieleni appuyez sur 2, Pour Dembaniouma pressez 3, Pour tout autre type, appuyez sur 4, Pour revenir en arrière, appuyez sur l'astérisque." --lang fr --output fr/audio/subcategory_mais.mp3;
 gtts-cli "Quel type de Sorgho voulez-vous acheter ? Pour Toroba appuyez sur 1, Pour Bobodje appuyez sur 2, Pour Tieblen pressez 3, Pour tout autre type, appuyez sur 4, Pour revenir en arrière, appuyez sur l'astérisque." --lang fr --output fr/audio/subcategory_sorgho.mp3;
 gtts-cli "Combien de kilos voulez-vous acheter? Veuillez indiquer le montant minimum, puis appuyez sur le HashTag." --lang fr --output fr/audio/quantity_min.mp3;

@@ -5,7 +5,7 @@
         <property name="inputmodes" value="dtmf"/>
 
         <prompt xml:lang="fr-fr">
-            <audio src="audio/subcategory_gombo.wav" />
+            <audio src="audio/subcategory_ricewav" />
         </prompt>
 
         <choice dtmf="1" next="#assign_subcategory_1"/>
@@ -17,21 +17,21 @@
 
     <form id="assign_subcategory_1">
         <block>
-            <assign expr="'Keleya'" name="application.subCategory" />
+            <assign expr="'Gambiaka'" name="application.subCategory" />
             <goto next="quantity.xml" />
         </block>
     </form>
 
     <form id="assign_subcategory_2">
         <block>
-            <assign expr="'Sabalibougou'" name="application.subCategory" />
+            <assign expr="'Shwetassoke'" name="application.subCategory" />
             <goto next="quantity.xml" />
         </block>
     </form>
 
     <form id="assign_subcategory_3">
         <block>
-            <assign expr="'Gansourouni'" name="application.subCategory" />
+            <assign expr="'Nerica'" name="application.subCategory" />
             <goto next="quantity.xml" />
         </block>
     </form>

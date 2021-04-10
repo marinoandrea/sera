@@ -9,7 +9,7 @@
         </prompt>
 
         <choice dtmf="1" next="#assign_category_fonio"/>
-        <choice dtmf="2" next="#assign_category_gombo"/>
+        <choice dtmf="2" next="#assign_category_rice"/>
         <choice dtmf="3" next="#assign_category_mais"/>
         <choice dtmf="4" next="#assign_category_sorgho" />
     </menu>
@@ -21,10 +21,10 @@
         </block>
     </form>
 
-    <form id="assign_category_gombo">
+    <form id="assign_category_rice">
         <block>
-            <assign expr="'gombo'" name="application.category" />
-            <goto next="subcategory_gombo.xml" />
+            <assign expr="'rice'" name="application.category" />
+            <goto next="subcategory_rice.xml" />
         </block>
     </form>
 
