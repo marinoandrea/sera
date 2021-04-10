@@ -21,15 +21,8 @@
         </prompt>
 
         <choice dtmf="1" next="#send"/>
-        <choice dtmf="#" next="#reprompt"/>
         <choice dtmf="*" next="price.xml"/>
     </menu>
-
-    <form id="reprompt">
-        <block>
-            <reprompt />
-        </block>
-    </form>
 
     <form id="send">
         <block>
