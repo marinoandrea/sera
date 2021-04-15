@@ -8,6 +8,7 @@ class HTTPRequest:
     method: str
     body: dict
     args: dict
+    form: dict
     headers: dict
 
 
