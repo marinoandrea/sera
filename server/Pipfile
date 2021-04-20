@@ -10,6 +10,11 @@ flask = "*"
 flask-cors = "*"
 sqlalchemy = "*"
 python-dotenv = "*"
+bcrypt = "*"
+cuid = "*"
+psycopg2 = "*"
+typing-extensions = "*"
+pyjwt = "*"
 
 [requires]
 python_version = "3.9"

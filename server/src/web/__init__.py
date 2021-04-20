@@ -1,13 +1,14 @@
 from flask import Flask, Response
 
+from .blueprints import auth, offerings
 from .extensions import cors
-
-# from .blueprints import ()
 
 
 def create_app(config_file='./config.py'):
     app = Flask(__name__)
-    app.config.from_pyfile(config_file)
+    # NOTE(andrea): we currently don't need any flask specific
+    # configuration since we don't use any extension beside CORS.
+    # app.config.from_pyfile(config_file)
     register_extensions(app)
     register_blueprints(app)
 
@@ -24,4 +25,5 @@ def register_extensions(app):
 
 
 def register_blueprints(app):
-    pass
+    app.register_blueprint(auth.blueprint)
+    app.register_blueprint(offerings.blueprint)
