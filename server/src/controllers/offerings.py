@@ -8,5 +8,5 @@ def get_latest(req: HTTPRequest) -> HTTPResponse:
     offerings = find_latest_offerings(extract_token(req))
     return HTTPResponse(
         status=200,
-        body=offerings
+        body=[o.to_json() for o in offerings]
     )
