@@ -24,7 +24,7 @@ class JWTAuthManager(AuthManager):
             _data['exp'] = expiration
 
         return jwt.encode(
-            _data, self.secret_key, algorithm="HS256").decode('utf-8')
+            _data, self.secret_key, algorithm="HS256")
 
     def verify_token(self, token: str) -> bool:
         try:
