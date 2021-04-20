@@ -14,6 +14,8 @@ def build_authenticate_phone_number(
         user = retrieve_user_by_phone_number(phone_number)
         if user is None:
             raise ValidationError("This phone number is not authorized.")
-        return auth_manager.create_token({"id": user.id})
+        return auth_manager.create_token({
+            "identity": {"id": user.id}
+        })
 
     return authenticate_phone_number

@@ -36,11 +36,13 @@ def from_result(result) -> Offering:
 def retrieve_latest_offerings() -> List[Offering]:
     query = '''
     select *
-    from offering
-    where created_at = (
+    from offering o1
+    where o1.created_at = (
         select max(created_at)
-        from offering
-        group by user_account_id, category, subcategory
+        from offering o2
+        where o2.category = o1.category
+        and o2.subcategory = o1.subcategory
+        and o2.user_account_id = o1.user_account_id
     );
     '''
     result = engine.execute(sqla.text(query)).fetchall()
