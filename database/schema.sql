@@ -37,6 +37,7 @@ create table offering (
     created_at bigint not null default (extract(epoch from CURRENT_TIMESTAMP) * 1000)::bigint,
     updated_at bigint not null default (extract(epoch from CURRENT_TIMESTAMP) * 1000)::bigint,
 
+    user_account_id text not null,
     category text not null,
     subcategory text not null,
     quantity_kg float not null,
@@ -44,7 +45,9 @@ create table offering (
     audio_asset text,
 
     primary key (id),
-    foreign key (category, subcategory) references seed_category(main_category, subcategory)
+    foreign key (user_account_id) references user_account(id),
+    foreign key (category, subcategory) references seed_category(main_category, subcategory),
+    unique (user_account_id, category, subcategory, created_at)
 
 );
 
