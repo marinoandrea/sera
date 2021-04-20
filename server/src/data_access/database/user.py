@@ -59,7 +59,7 @@ def create_user(data: User) -> User:
         created_at,
         updated_at,
         name,
-        group,
+        user_group,
         email,
         phone_number,
         password
@@ -69,7 +69,7 @@ def create_user(data: User) -> User:
         :created_at,
         :updated_at,
         :name,
-        :group,
+        :user_group,
         :email,
         :phone_number,
         :password,
