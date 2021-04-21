@@ -42,12 +42,26 @@ create table offering (
     subcategory text not null,
     quantity_kg float not null,
     price_per_kg_cfa_cents integer not null,
-    audio_asset text,
 
     primary key (id),
     foreign key (user_account_id) references user_account(id),
     foreign key (category, subcategory) references seed_category(main_category, subcategory),
     unique (user_account_id, category, subcategory, created_at)
+
+);
+
+create table offering_audio (
+
+    id text not null,
+    created_at bigint not null default (extract(epoch from CURRENT_TIMESTAMP) * 1000)::bigint,
+    updated_at bigint not null default (extract(epoch from CURRENT_TIMESTAMP) * 1000)::bigint,
+
+    offering_id text not null,
+    lang char(2) not null,
+    path text not null,
+
+    primary key (id),
+    foreign key (offering_id) references offering(id)
 
 );
 
