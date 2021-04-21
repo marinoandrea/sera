@@ -3,6 +3,7 @@ from typing import Callable, Tuple, Union
 from flask import Response as FlaskResponse
 from flask import current_app, jsonify
 from flask import request as flask_req
+from flask import send_file
 from src.constants import MSG_ERROR_INTERNAL
 from src.controllers import HTTPRequest, HTTPResponse
 from src.errors import AuthorizationError, ValidationError
@@ -28,7 +29,11 @@ def run_flask_controller(
             headers=dict(flask_req.headers)
         )
         response: HTTPResponse = controller(request)
-        return jsonify(data=response.body), response.status
+
+        if not response.is_raw:
+            return jsonify(data=response.body), response.status
+        else:
+            return send_file(response.file_path)
 
     except ValidationError as e:
         return jsonify(error=str(e)), 400

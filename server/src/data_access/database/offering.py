@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 import sqlalchemy as sqla
 from src.data_access.database import engine
@@ -47,3 +47,41 @@ def retrieve_latest_offerings() -> Tuple[List[Offering], List[OfferingAudio]]:
         [from_result(o, Offering) for o in offerings],
         [from_result(a, OfferingAudio) for a in audios]
     )
+
+
+class OfferingAudioFilters(TypedDict):
+    lang: str
+    min_quantity: Optional[float]
+    max_quantity: Optional[float]
+    category: str
+    subcategory: str
+
+
+def retrieve_offering_audios(
+    filters: OfferingAudioFilters
+) -> List[OfferingAudio]:
+
+    params: OfferingAudioFilters = {
+        'lang': filters['lang'],
+        'category': filters['category'],
+        'subcategory': filters['subcategory'],
+        'min_quantity': filters.get('min_quantity', 0.0),
+        'max_quantity': filters.get('max_quantity', 9999.0),
+    }
+
+    print(params)
+
+    query = '''
+    select *
+    from offering_audio
+    where offering_id in (
+        select id
+        from offering
+        where quantity_kg >= :min_quantity
+        and quantity_kg <= :max_quantity
+        and category = lower(:category)
+        and lower(subcategory) = lower(:subcategory)
+    ) and lang = :lang;
+    '''
+    result = engine.execute(sqla.text(query), params).fetchall()
+    return [from_result(a, OfferingAudio) for a in result]

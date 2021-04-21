@@ -4,7 +4,7 @@ from time import time
 import sqlalchemy as sqla
 
 engine: sqla.engine.Engine = sqla.create_engine(
-    os.getenv('DATABASE_URL', '').replace('postgres', 'postgresql'),
+    os.getenv('DATABASE_URL', '').replace('postgres:/', 'postgresql:/'),
     echo=os.getenv('APP_ENVIRONMENT') == 'development',
     pool_size=10,
     max_overflow=10,

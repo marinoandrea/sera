@@ -4,6 +4,7 @@ from src.plugins import auth_manager
 
 from .authenticate_phone_number import build_authenticate_phone_number
 from .find_latest_offerings import build_find_latest_offerings
+from .make_search_audio import build_make_search_audio
 
 authenticate_phone_number = build_authenticate_phone_number(
     UserRepository.retrieve_user_by_phone_number,
@@ -12,4 +13,8 @@ authenticate_phone_number = build_authenticate_phone_number(
 
 find_latest_offerings = build_find_latest_offerings(
     OfferingRepository.retrieve_latest_offerings
+)
+
+make_search_audio = build_make_search_audio(
+    OfferingRepository.retrieve_offering_audios  # type: ignore
 )

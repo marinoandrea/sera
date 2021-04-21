@@ -16,3 +16,5 @@ class HTTPRequest:
 class HTTPResponse:
     status: int
     body: Optional[Any]
+    file_path: Optional[str] = None
+    is_raw: bool = False

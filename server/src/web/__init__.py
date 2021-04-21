@@ -1,6 +1,6 @@
 from flask import Flask, Response
 
-from .blueprints import auth, offerings
+from .blueprints import audio, auth, offerings
 from .extensions import cors
 
 
@@ -25,5 +25,6 @@ def register_extensions(app):
 
 
 def register_blueprints(app):
+    app.register_blueprint(audio.blueprint)
     app.register_blueprint(auth.blueprint)
     app.register_blueprint(offerings.blueprint)
