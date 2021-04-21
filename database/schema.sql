@@ -61,7 +61,8 @@ create table offering_audio (
     path text not null,
 
     primary key (id),
-    foreign key (offering_id) references offering(id)
+    foreign key (offering_id) references offering(id),
+    unique(offering_id, lang)
 
 );
 
