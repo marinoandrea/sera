@@ -15,6 +15,7 @@ cuid = "*"
 psycopg2 = "*"
 typing-extensions = "*"
 pyjwt = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.9"
