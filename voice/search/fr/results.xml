@@ -25,12 +25,9 @@
    <form id="listenresults">
       <block>
          <prompt xml:lang="fr-fr">
-            <audio src="audio/mock_result_1.wav" />
-            <break />
-            <value expr="application.quantityLowerBound" />
-            <audio src="audio/mock_result_2.wav" />
-            <value expr="application.subCategory" />
-            <audio src="audio/mock_result_3.wav" />
+            <audio expr="generateQueryString('fr')">
+               <audio src="audio/error.wav" />
+            </audio>
          </prompt>
          <exit />
       </block>
