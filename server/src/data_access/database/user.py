@@ -6,6 +6,8 @@ from src.data_access.database import engine, get_cursor
 from src.entities import User
 from typing_extensions import TypedDict
 
+from .utils import from_result
+
 
 class UserData(TypedDict):
     name: str
@@ -16,24 +18,6 @@ class UserData(TypedDict):
     password: str
 
 
-def from_result(result) -> User:
-    # NOTE(andrea): this is a workaround
-    # for having default fields in the base
-    # Entity class. Dataclasses do not allow
-    # to use defaulted fields in the __init__,
-    # we therefore have to set these fields
-    # explicitly.
-    result = dict(result)
-    id = result.pop('id')
-    created_at = result.pop('created_at')
-    updated_at = result.pop('updated_at')
-    out = User(**result)
-    out.id = id
-    out.created_at = created_at
-    out.updated_at = updated_at
-    return out
-
-
 def retrieve_user_by_id(id: str) -> Optional[User]:
     query = '''
     select *
@@ -42,7 +26,7 @@ def retrieve_user_by_id(id: str) -> Optional[User]:
     '''
     result = engine.execute(sqla.text(query), {'id': id})\
         .first()
-    return from_result(result) if result else None
+    return from_result(result, User) if result else None
 
 
 def retrieve_user_by_phone_number(phone_number: str) -> Optional[User]:
@@ -53,7 +37,7 @@ def retrieve_user_by_phone_number(phone_number: str) -> Optional[User]:
     '''
     result = engine.execute(sqla.text(query), {'phone_number': phone_number})\
         .first()
-    return from_result(result) if result else None
+    return from_result(result, User) if result else None
 
 
 def create_user(data: User) -> User:
@@ -82,7 +66,7 @@ def create_user(data: User) -> User:
     '''
     result = engine.execute(sqla.text(query), asdict(data))\
         .first()
-    return from_result(result)
+    return from_result(result, User)  # type: ignore
 
 
 def delete_user(id: str):
@@ -123,4 +107,4 @@ def update_user(id: str, data: UserData) -> User:
     result = engine.execute(sqla.text(query), params)\
         .first()
 
-    return from_result(result)
+    return from_result(result, User)  # type: ignore

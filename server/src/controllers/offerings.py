@@ -5,8 +5,11 @@ from .utils import extract_token
 
 
 def get_latest(req: HTTPRequest) -> HTTPResponse:
-    offerings = find_latest_offerings(extract_token(req))
+    offerings, audios = find_latest_offerings(extract_token(req))
     return HTTPResponse(
         status=200,
-        body=[o.to_json() for o in offerings]
+        body={
+            'offerings': [o.to_json() for o in offerings],
+            'audio_assets': [a.to_json() for a in audios]
+        }
     )

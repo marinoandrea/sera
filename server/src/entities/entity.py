@@ -11,4 +11,5 @@ class Entity:
     updated_at: int = field(default=int(time() * 1000), init=False)
 
     def to_json(self) -> dict:
-        return {f.name: getattr(self, f.name) for f in fields(self)}  # type: ignore
+        # type: ignore
+        return {f.name: getattr(self, f.name) for f in fields(self)}

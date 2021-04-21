@@ -1,39 +1,22 @@
-from typing import List
+from typing import List, Tuple
 
 import sqlalchemy as sqla
 from src.data_access.database import engine
-from src.entities import Offering
+from src.entities import Offering, OfferingAudio
 from typing_extensions import TypedDict
+
+from .utils import from_result
 
 
 class OfferingData(TypedDict):
-    Offering_account_id: str
+    user_account_id: str
     category: str
     subcategory: str
     quantity_kg: float
     price_per_kg_cfa_cents: int
-    audio_asset: str
 
 
-def from_result(result) -> Offering:
-    # NOTE(andrea): this is a workaround
-    # for having default fields in the base
-    # Entity class. Dataclasses do not allow
-    # to use defaulted fields in the __init__,
-    # we therefore have to set these fields
-    # explicitly.
-    result = dict(result)
-    id = result.pop('id')
-    created_at = result.pop('created_at')
-    updated_at = result.pop('updated_at')
-    out = Offering(**result)
-    out.id = id
-    out.created_at = created_at
-    out.updated_at = updated_at
-    return out
-
-
-def retrieve_latest_offerings() -> List[Offering]:
+def retrieve_latest_offerings() -> Tuple[List[Offering], List[OfferingAudio]]:
     query = '''
     select *
     from offering o1
@@ -45,5 +28,22 @@ def retrieve_latest_offerings() -> List[Offering]:
         and o2.user_account_id = o1.user_account_id
     );
     '''
-    result = engine.execute(sqla.text(query)).fetchall()
-    return [from_result(r) for r in result]
+    offerings = engine.execute(sqla.text(query)).fetchall()
+
+    query = '''
+    select *
+    from offering_audio
+    where offering_id = any(:offering_ids);
+    '''
+    audios = engine.execute(
+        sqla.text(query),
+        {'offering_ids': list(
+            map(lambda o: o['id'], offerings)  # type: ignore
+        )}
+    )\
+        .fetchall()
+
+    return (
+        [from_result(o, Offering) for o in offerings],
+        [from_result(a, OfferingAudio) for a in audios]
+    )
