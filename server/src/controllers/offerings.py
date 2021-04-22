@@ -1,6 +1,7 @@
 from src.controllers import HTTPRequest, HTTPResponse
 from src.errors import ValidationError
-from src.use_cases import find_latest_offerings, upload_offering, find_offerings
+from src.use_cases import (find_latest_offerings, find_offerings,
+                           upload_offering)
 
 from .utils import extract_token
 
@@ -19,11 +20,11 @@ def get_latest(req: HTTPRequest) -> HTTPResponse:
 def post_offering(req: HTTPRequest) -> HTTPResponse:
     try:
         offering = upload_offering(
-            req.body['phonenumber'],
-            req.body['category'],
-            req.body['subcategory'],
-            req.body['quantity'],
-            req.body['price']
+            req.form['phonenumber'],
+            req.form['category'],
+            req.form['subcategory'],
+            int(req.form['quantity']),
+            int(req.form['price'])
         )
     except KeyError:
         raise ValidationError("Your request is not valid.")
@@ -32,6 +33,7 @@ def post_offering(req: HTTPRequest) -> HTTPResponse:
         status=200,
         body=offering
     )
+
 
 def get_search(req: HTTPRequest) -> HTTPResponse:
 

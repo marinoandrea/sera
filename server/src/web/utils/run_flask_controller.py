@@ -39,6 +39,7 @@ def run_flask_controller(
             return send_file(response.file_path)
 
     except ValidationError as e:
+        logger.log('info', str(e))
         return jsonify(error=str(e)), 400
 
     except AuthorizationError as e:
