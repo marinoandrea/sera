@@ -19,7 +19,7 @@ def get_latest(req: HTTPRequest) -> HTTPResponse:
 def post_offering(req: HTTPRequest) -> HTTPResponse:
     try:
         offering = upload_offering(
-            req.args['phone_number'],
+            req.args['phonenumber'],
             req.args['category'],
             req.args['subcategory'],
             req.args['quantity'],
