@@ -29,7 +29,7 @@ def run_flask_controller(
             headers=dict(flask_req.headers)
         )
 
-        logger.log('info', str(HTTPRequest))
+        logger.log('info', str(request))
 
         response: HTTPResponse = controller(request)
 
