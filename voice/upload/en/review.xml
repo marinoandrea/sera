@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version="2.1" application="root.xml">
 
-
     <menu>
         <property name="inputmodes" value="dtmf"/>
 
@@ -10,13 +9,13 @@
             <value expr="application.category"/>
             <break />
             <audio src="audio/review_subcategory.wav" />
-            <value expr="application.subCategory"/>
+            <value expr="application.subcategory"/>
             <break />
             <audio src="audio/review_quantity.wav" />
-            <value expr="application.quantityKg"/>
+            <value expr="application.quantity"/>
             <break />
             <audio src="audio/review_price.wav" />
-            <value expr="application.totPrice"/>
+            <value expr="application.price"/>
             <break />
             <audio src="audio/review_instructions.wav" />
         </prompt>
@@ -27,6 +26,27 @@
 
     <form id="send">
         <block>
+            <script>
+                <![CDATA[
+                function stripSequence(seq) {
+                    var out = '';
+                    for (var i = 0; i < seq.length; i++) {
+                        if (seq.charAt(i) == ' ') continue;
+                        out += seq.charAt(i);
+                    }
+                    return out;
+                }
+                ]]>
+            </script>
+            <!-- change variable names to comply with external API -->
+            <var name="category" expr="application.category" />
+            <var name="subcategory" expr="application.subCategory" />
+            <var name="quantity" expr="stripSequence(application.quantityKg)" />
+            <var name="price" expr="stripSequence(application.totPrice)" />
+            <var name="phonenumber" expr="session.callerid" />
+            <!-- POST request -->
+            <data fetchtimeout="20s" name="response" namelist="category subcategory quantity price phonenumber" srcexpr="'https://sera-api.herokuapp.com/offerings/'" method="post" />
+
             <prompt xml:lang="en-gb">
                 <audio src="audio/review_sent.wav" />
             </prompt>
