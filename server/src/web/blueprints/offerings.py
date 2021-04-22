@@ -15,3 +15,7 @@ def r_main():
 @blueprint.route('/latest', methods=['GET'])
 def r_latest():
     return run_flask_controller(Offerings.get_latest)
+
+@blueprint.route('/search', methods=['GET'])
+def search():
+    return run_flask_controller(Offerings.get_search)
