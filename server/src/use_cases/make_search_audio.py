@@ -34,7 +34,7 @@ def build_make_search_audio(
             return None
 
         output_path = f'temp_search_{int(time() * 1000)}.wav'
-        output_path = pathlib.Path(os.getcwd()).joinpath(output_path)
+        output_path = str(pathlib.Path(os.getcwd()).joinpath(output_path))
 
         # use sox to concat offering audios in a single temp file
         sox_string = 'sox -b 16 -c 1 -e signed-integer '

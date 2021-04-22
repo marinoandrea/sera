@@ -1,3 +1,4 @@
+from dataclasses import asdict
 from typing import List, Optional, Tuple
 
 import sqlalchemy as sqla
@@ -85,3 +86,30 @@ def retrieve_offering_audios(
     '''
     result = engine.execute(sqla.text(query), params).fetchall()
     return [from_result(a, OfferingAudio) for a in result]
+
+
+def create_offering(offering: Offering):
+    query = '''
+    insert into offering (
+        id,
+        created_at,
+        updated_at,
+        user_account_id,
+        category,
+        subcategory,
+        quantity_kg,
+        price_per_kg_cfa_cents
+    )
+    values (
+        :id,
+        :created_at,
+        :updated_at,
+        :user_account_id,
+        :category,
+        :subcategory,
+        :quantity_kg,
+        :price_per_kg_cfa_cents
+    )
+    returning *;
+    '''
+    engine.execute(sqla.text(query), asdict(offering))
