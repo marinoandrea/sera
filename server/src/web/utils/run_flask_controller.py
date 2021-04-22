@@ -28,6 +28,9 @@ def run_flask_controller(
             form=flask_req.form,
             headers=dict(flask_req.headers)
         )
+
+        logger.log('info', str(HTTPRequest))
+
         response: HTTPResponse = controller(request)
 
         if not response.is_raw:

@@ -19,11 +19,11 @@ def get_latest(req: HTTPRequest) -> HTTPResponse:
 def post_offering(req: HTTPRequest) -> HTTPResponse:
     try:
         offering = upload_offering(
-            req.args['phonenumber'],
-            req.args['category'],
-            req.args['subcategory'],
-            req.args['quantity'],
-            req.args['price']
+            req.body['phonenumber'],
+            req.body['category'],
+            req.body['subcategory'],
+            req.body['quantity'],
+            req.body['price']
         )
     except KeyError:
         raise ValidationError("Your request is not valid.")
