@@ -38,7 +38,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "scp -r ./build/* andrea@95.179.176.170:/var/www/sera.andreamarino.dev/html"
   },
   "eslintConfig": {
     "extends": [
