@@ -2,7 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 
 const colors = {
   bg: "#ECEFF4",
-  fg: "#D8DEE9",
+  fg: "#E5E9F0",
   brand: "#8FBCBB",
   text: "#2E3440",
   success: { dark: "#10B981", light: "#D1FAE5" },
