@@ -114,11 +114,13 @@ def create_offering(offering: Offering):
     '''
     engine.execute(sqla.text(query), asdict(offering))
 
+
 class OfferingFilters(TypedDict):
     min_quantity: float
     max_quantity: float
     category: str
     subcategory: str
+
 
 def retrieve_offerings(filters: OfferingFilters) -> List[Offering]:
 
@@ -138,13 +140,12 @@ def retrieve_offerings(filters: OfferingFilters) -> List[Offering]:
         where o2.category = o1.category
         and o2.subcategory = o1.subcategory
         and o2.user_account_id = o1.user_account_id
+        and o1.category = :category
+        and o1.subcategory = :subcategory
+        and o1.quantity_kg >= :min_quantity
+        and o1.quantity_kg <= :max_quantity
+    );
+    '''
+    result = engine.execute(sqla.text(query), params).fetchall()
 
-        and o1.category = category
-        and o1.subcategory = subcategory
-        and o1.quantity_kg >= min_quantity
-        and o1.quantity_kg <= max_quantity
-        );
-        '''
-
-    result = engine.execute(sqla.text(query, params)).fetchall()
     return [from_result(a, Offering) for a in result]

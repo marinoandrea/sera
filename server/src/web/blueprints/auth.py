@@ -7,6 +7,11 @@ blueprint = Blueprint('auth',  __name__, url_prefix='/auth')
 CORS(blueprint)
 
 
+@blueprint.route('/login', methods=['POST'])
+def r_login():
+    return run_flask_controller(Auth.post_login)
+
+
 @blueprint.route('/phone-login', methods=['POST'])
 def r_phone_login():
     return run_flask_controller(Auth.post_phone_login)

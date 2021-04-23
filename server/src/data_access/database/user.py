@@ -1,5 +1,5 @@
 from dataclasses import asdict
-from typing import Any, Mapping, Optional
+from typing import Any, List, Mapping, Optional
 
 import sqlalchemy as sqla
 from src.data_access.database import engine, get_cursor
@@ -29,6 +29,17 @@ def retrieve_user_by_id(id: str) -> Optional[User]:
     return from_result(result, User) if result else None
 
 
+def retrieve_user_by_email(email: str) -> Optional[User]:
+    query = '''
+    select *
+    from user_account
+    where email = :email;
+    '''
+    result = engine.execute(sqla.text(query), {'email': email})\
+        .first()
+    return from_result(result, User) if result else None
+
+
 def retrieve_user_by_phone_number(phone_number: str) -> Optional[User]:
     query = '''
     select *
@@ -38,6 +49,17 @@ def retrieve_user_by_phone_number(phone_number: str) -> Optional[User]:
     result = engine.execute(sqla.text(query), {'phone_number': phone_number})\
         .first()
     return from_result(result, User) if result else None
+
+
+def retrieve_users_by_id(ids: List[str]) -> List[User]:
+    query = '''
+    select *
+    from user_account
+    where id = any(:ids);
+    '''
+    results = engine.execute(sqla.text(query), {'ids': ids})\
+        .fetchall()
+    return [from_result(u, User) for u in results]
 
 
 def create_user(data: User) -> User:
@@ -58,9 +80,9 @@ def create_user(data: User) -> User:
         :updated_at,
         :name,
         :user_group,
-        :email,
+        lower(:email),
         :phone_number,
-        :password,
+        :password
     )
     returning *;
     '''

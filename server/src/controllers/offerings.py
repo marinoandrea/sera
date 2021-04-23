@@ -35,12 +35,22 @@ def post_offering(req: HTTPRequest) -> HTTPResponse:
     )
 
 
-def get_search(req: HTTPRequest) -> HTTPResponse:
+def post_search(req: HTTPRequest) -> HTTPResponse:
+    try:
+        users, offerings = find_offerings(
+            extract_token(req),
+            req.body['category'],
+            req.body['subcategory'],
+            float(req.body.get('min_quantity', '0.0')),
+            float(req.body.get('max_quantity', '9999.0')),
+        )
+    except KeyError:
+        raise ValidationError("Your request is not valid.")
 
-    offerings = find_offerings(extract_token(req))
     return HTTPResponse(
         status=200,
         body={
-            'offerings': [o.to_json() for o in offerings]
+            'offerings': [o.to_json() for o in offerings],
+            'users': [u.to_json() for u in users]
         }
     )
