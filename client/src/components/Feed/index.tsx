@@ -1,21 +1,22 @@
-import { Button } from "@chakra-ui/button";
+import { Box } from "@chakra-ui/layout";
 import React, { useEffect } from "react";
 import OfferingsAPI, {
   GetOfferingsLatestRequest,
   GetOfferingsLatestResponse,
 } from "../../services/offerings";
-import { logout } from "../../store/actions/auth";
 import useApi from "../../utils/useApi";
-import useStateDispatch from "../../utils/useStateDispatch";
+import useStateSelector from "../../utils/useStateSelector";
 import Container from "../common/Container";
 import Loader from "../common/Loader";
+import Title from "../common/typography/Title";
+import FeedList from "./List";
 
 interface FeedProps {}
 
 const Feed: React.FC<FeedProps> = () => {
-  const dispatch = useStateDispatch();
+  const { user } = useStateSelector((state) => state.auth);
 
-  const [{ isPending, data }, postOfferingsSearch] = useApi<
+  const [{ isPending, isSuccess, data }, postOfferingsSearch] = useApi<
     GetOfferingsLatestRequest,
     GetOfferingsLatestResponse
   >(OfferingsAPI.buildGetOfferingsLatest());
@@ -26,9 +27,17 @@ const Feed: React.FC<FeedProps> = () => {
 
   if (isPending) return <Loader />;
 
+  if (!data || !isSuccess) return null;
+
+  const { offerings, users } = data.data;
+
   return (
     <Container>
-      <Button onClick={() => dispatch(logout())}>Sign Out</Button>
+      <Title my={6}>Welcome, {user!.name}!</Title>
+
+      <Box rounded='lg' bg='fg' p={4}>
+        <FeedList {...{ offerings, users }} />
+      </Box>
     </Container>
   );
 };

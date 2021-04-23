@@ -15,6 +15,7 @@ export type User = {
 } & UniqueEntity;
 
 export type Offering = {
+  user_account_id: string;
   category: string;
   subcategory: string;
   quantity_kg: number;

@@ -1,4 +1,3 @@
-import { Alert } from "@chakra-ui/alert";
 import { Button } from "@chakra-ui/button";
 import { Form, Formik } from "formik";
 import React from "react";
@@ -10,6 +9,7 @@ import UsersAPI, {
 import { login } from "../../store/actions/auth";
 import useApi from "../../utils/useApi";
 import useStateDispatch from "../../utils/useStateDispatch";
+import Alert from "../common/Alert";
 import PasswordField from "../common/fields/PasswordField";
 import TextInputField from "../common/fields/TextInputField";
 
@@ -66,13 +66,7 @@ const RegistrationForm: React.FC = () => {
             required
           />
 
-          <Alert
-            status='warning'
-            borderColor='warn.dark'
-            borderWidth={2}
-            bg='warn.light'
-            rounded='md'
-          >
+          <Alert status='warning'>
             Input the number you are going to use while testing the Voxeo app.
             <br />
             Please use this format:

@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import useStateSelector from "../utils/useStateSelector";
+import NavBar from "./common/NavBar";
 import Feed from "./Feed";
 import Login from "./Login";
 import Registration from "./Registration";
@@ -10,9 +11,13 @@ function App() {
   return (
     <>
       {isAuthenticated ? (
-        <Switch>
-          <Route path='/' component={Feed} />
-        </Switch>
+        <>
+          <NavBar />
+          <Switch>
+            <Route path='/' component={Feed} />
+            <Route path='/new' component={Feed} />
+          </Switch>
+        </>
       ) : (
         <Switch>
           <Route path='/login' component={Login} />
