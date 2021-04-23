@@ -16,7 +16,9 @@ authenticate_phone_number = build_authenticate_phone_number(
 )
 
 find_latest_offerings = build_find_latest_offerings(
-    OfferingRepository.retrieve_latest_offerings
+    OfferingRepository.retrieve_latest_offerings,
+    OfferingRepository.retrieve_offering_audios_by_id,
+    UserRepository.retrieve_users_by_id
 )
 
 make_search_audio = build_make_search_audio(

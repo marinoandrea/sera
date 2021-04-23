@@ -9,7 +9,7 @@ def post_phone_login(req: HTTPRequest) -> HTTPResponse:
     auth_token = authenticate_phone_number(req.body['phone_number'])
     return HTTPResponse(
         status=200,
-        body={'auth_token': auth_token}
+        body={'token': auth_token}
     )
 
 
@@ -19,8 +19,8 @@ def post_login(req: HTTPRequest) -> HTTPResponse:
     if 'password' not in req.body:
         raise ValidationError('You must specify a password.')
 
-    auth_token = login(req.body['email'], req.body['password'])
+    user, token = login(req.body['email'], req.body['password'])
     return HTTPResponse(
         status=200,
-        body={'auth_token': auth_token}
+        body={'user': token, 'token': token}
     )

@@ -1,5 +1,5 @@
 from dataclasses import asdict
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 import sqlalchemy as sqla
 from src.data_access.database import engine
@@ -17,7 +17,7 @@ class OfferingData(TypedDict):
     price_per_kg_cfa_cents: int
 
 
-def retrieve_latest_offerings() -> Tuple[List[Offering], List[OfferingAudio]]:
+def retrieve_latest_offerings() -> List[Offering]:
     query = '''
     select *
     from offering o1
@@ -30,24 +30,17 @@ def retrieve_latest_offerings() -> Tuple[List[Offering], List[OfferingAudio]]:
     );
     '''
     offerings = engine.execute(sqla.text(query)).fetchall()
+    return [from_result(o, Offering) for o in offerings]
 
+
+def retrieve_offering_audios_by_id(ids: List[str]) -> List[OfferingAudio]:
     query = '''
     select *
     from offering_audio
-    where offering_id = any(:offering_ids);
+    where offering_id = any(:ids);
     '''
-    audios = engine.execute(
-        sqla.text(query),
-        {'offering_ids': list(
-            map(lambda o: o['id'], offerings)  # type: ignore
-        )}
-    )\
-        .fetchall()
-
-    return (
-        [from_result(o, Offering) for o in offerings],
-        [from_result(a, OfferingAudio) for a in audios]
-    )
+    audios = engine.execute(sqla.text(query), {'ids': ids}).fetchall()
+    return [from_result(a, OfferingAudio) for a in audios]
 
 
 class OfferingAudioFilters(TypedDict):

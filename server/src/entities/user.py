@@ -19,7 +19,6 @@ class User(Entity):
         # out of the system
         out = {}
         for field in fields(self):
-            name = field[0]  # type: ignore
-            if name != 'password':
-                out[name] = getattr(self, name)
+            if field.name != 'password':
+                out[field.name] = getattr(self, field.name)
         return out
