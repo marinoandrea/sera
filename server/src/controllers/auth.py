@@ -22,5 +22,5 @@ def post_login(req: HTTPRequest) -> HTTPResponse:
     user, token = login(req.body['email'], req.body['password'])
     return HTTPResponse(
         status=200,
-        body={'user': token, 'token': token}
+        body={'user': user, 'token': token}
     )
