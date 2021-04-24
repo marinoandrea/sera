@@ -1,4 +1,4 @@
-from dataclasses import dataclass, fields
+from dataclasses import asdict, dataclass
 from typing import Optional
 
 from .entity import Entity
@@ -14,11 +14,6 @@ class User(Entity):
     is_admin: bool = False
 
     def to_json(self) -> dict:
-        # NOTE(andrea): we override base class method
-        # in order to prevent password hash from being sent
-        # out of the system
-        out = {}
-        for field in fields(self):
-            if field.name != 'password':
-                out[field.name] = getattr(self, field.name)
+        out = asdict(self)
+        out.pop('password')
         return out
