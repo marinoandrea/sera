@@ -116,7 +116,7 @@ const validationSchema = Yup.object({
     .min(3, "Please use at least 3 characters for your password.")
     .required("Insert a password."),
   phone_number: Yup.string()
-    .matches(/^[0-9]{12}$/, "Please use the specified format for your number.")
+    .matches(/^[0-9]+$/, "Please use the specified format for your number.")
     .required("Insert a phone number."),
 });
 

@@ -24,7 +24,7 @@ const FeedList: React.FC<FeedListProps> = ({ offerings, users }) => {
       <Tbody>
         {offerings && offerings.length > 0 ? (
           offerings
-            .sort((a, b) => a.created_at - b.created_at)
+            .sort((a, b) => b.created_at - a.created_at)
             .map((offering) => {
               const user = users.find((u) => u.id === offering.user_account_id);
               if (!user) return null;

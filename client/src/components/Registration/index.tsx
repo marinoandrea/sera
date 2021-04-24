@@ -28,7 +28,7 @@ const Registration: React.FC = () => {
 
       <BaseText py={4}>
         Already have an account?
-        <LinkText ml={2} to='/login'>
+        <LinkText ml={2} to='/'>
           Sign In
         </LinkText>
       </BaseText>

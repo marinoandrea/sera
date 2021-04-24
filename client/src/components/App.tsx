@@ -20,7 +20,6 @@ function App() {
         </>
       ) : (
         <Switch>
-          <Route path='/login' component={Login} />
           <Route path='/registration' component={Registration} />
           <Route path='/' component={Login} />
         </Switch>
