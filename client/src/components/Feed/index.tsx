@@ -23,7 +23,7 @@ const Feed: React.FC<FeedProps> = () => {
 
   useEffect(() => {
     postOfferingsSearch();
-  }, []);
+  }, []); // eslint-disable-line
 
   if (isPending) return <Loader />;
 
@@ -35,7 +35,7 @@ const Feed: React.FC<FeedProps> = () => {
     <Container>
       <Title my={6}>Welcome, {user!.name}!</Title>
 
-      <Box rounded='lg' bg='fg' p={4}>
+      <Box rounded='lg' bg='fg' p={4} overflowX='auto'>
         <FeedList {...{ offerings, users }} />
       </Box>
     </Container>

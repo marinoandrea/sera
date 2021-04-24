@@ -7,9 +7,7 @@ import Container from "./Container";
 import Logo from "./Logo";
 import Title from "./typography/Title";
 
-interface NavBarProps {}
-
-const NavBar: React.FC<NavBarProps> = ({}) => {
+const NavBar: React.FC = () => {
   const dispatch = useStateDispatch();
 
   return (
