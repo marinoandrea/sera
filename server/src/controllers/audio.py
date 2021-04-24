@@ -7,10 +7,10 @@ def post_search(req: HTTPRequest) -> HTTPResponse:
     try:
         audio_assets = find_offering_audios(
             req.args['lang'],
-            req.args['category'],
-            req.args['subcategory'],
-            req.args.get('min_quantity', 0),
-            req.args.get('max_quantity', 99999)
+            req.form['category'],
+            req.form['subcategory'],
+            req.form.get('min_quantity', 0),
+            req.form.get('max_quantity', 99999)
         )
     except KeyError:
         raise ValidationError(
