@@ -5,18 +5,18 @@
       <prompt xml:lang="fr-fr">
          <audio src="audio/results_category.wav" />
          <value expr="application.category" />
-         <break />
+         <break size="small" />
          <audio src="audio/results_subcategory.wav" />
          <value expr="application.subCategory" />
-         <break />
+         <break size="small" />
          <audio src="audio/results_quantity_min.wav" />
          <value expr="application.quantityLowerBound" />
          <audio src="audio/kilos.wav" />
-         <break />
+         <break size="small" />
          <audio src="audio/results_quantity_max.wav" />
          <value expr="application.quantityUpperBound" />
          <audio src="audio/kilos.wav" />
-         <break />
+         <break size="small" />
          <audio src="audio/results_instructions.wav" />
       </prompt>
       <choice dtmf="1" next="#listenresults" />
@@ -24,11 +24,48 @@
    </menu>
    <form id="listenresults">
       <block>
-         <prompt xml:lang="fr-fr">
-            <audio expr="generateQueryString('fr')">
-               <audio src="audio/error.wav" />
-            </audio>
-         </prompt>
+         <script>
+            <![CDATA[
+               function stripSequence(seq) {
+                  var out = '';
+                  for (var i = 0; i < seq.length; i++) {
+                     if (seq.charAt(i) == ' ') continue;
+                     out += seq.charAt(i);
+                  }
+                  return out;
+               }
+            ]]>
+         </script>
+         <!-- change variable names to comply with external API -->
+         <var name="category" expr="application.category" />
+         <var name="subcategory" expr="application.subCategory" />
+         <var name="min_quantity" expr="stripSequence(application.quantityLowerBound)" />
+         <var name="max_quantity" expr="stripSequence(application.quantityUpperBound)" />
+         <var name="phonenumber" expr="session.callerid" />
+         <!-- POST request -->
+         <data fetchtimeout="20s" name="response" namelist="category subcategory min_quantity max_quantity phonenumber" srcexpr="'https://sera-api.herokuapp.com/audio/fr/search'" method="post" />
+
+         <!-- play audios back -->
+         <if cond="response.data.length &gt; 0">
+            <prompt xml:lang="fr-fr">
+               Votre recherche a donné
+               <value expr="response.data.length" />
+               résultats.
+               <break size="small" />
+               Malheureusement, Voxeo ne nous permet pas de lire l'audio d'une source distante.
+               <break size="small" />
+               Veuillez consulter notre interface web.
+            </prompt>
+            <foreach item="audio" array="response.data">
+               <!-- This does not work, maybe it is a problem with https? -->
+               <!-- audio fetchtimeout="20s" expr="audio.path" /-->
+            </foreach>
+            <else/>
+            <prompt xml:lang="fr-fr">
+            Il n'y a pas d'offres pour les paramètres donnés.
+            </prompt>
+         </if>
+
          <exit />
       </block>
    </form>
