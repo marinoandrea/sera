@@ -7,6 +7,6 @@ blueprint = Blueprint('audio',  __name__, url_prefix='/audio')
 CORS(blueprint)
 
 
-@blueprint.route('/<lang>/search', methods=['GET'])
+@blueprint.route('/<lang>/search', methods=['POST'])
 def r_search(lang: str):
-    return run_flask_controller(Audio.get_search)
+    return run_flask_controller(Audio.post_search)

@@ -16,6 +16,7 @@ psycopg2 = "*"
 typing-extensions = "*"
 pyjwt = "*"
 gunicorn = "*"
+gtts = "*"
 
 [requires]
 python_version = "3.9"

@@ -37,3 +37,10 @@ class PasswordManager(ABC):
     @abstractmethod
     def check_password(self, password: str, hash: str) -> bool:
         pass
+
+
+class FileManager(ABC):
+
+    @abstractmethod
+    def store_file(self, temp_path: str) -> str:
+        pass

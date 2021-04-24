@@ -108,6 +108,29 @@ def create_offering(offering: Offering):
     engine.execute(sqla.text(query), asdict(offering))
 
 
+def create_offering_audio(offering_audio: OfferingAudio):
+    query = '''
+    insert into offering_audio (
+        id,
+        created_at,
+        updated_at,
+        offering_id,
+        lang,
+        path
+    )
+    values (
+        :id,
+        :created_at,
+        :updated_at,
+        :offering_id,
+        :lang,
+        :path
+    )
+    returning *;
+    '''
+    engine.execute(sqla.text(query), asdict(offering_audio))
+
+
 class OfferingFilters(TypedDict):
     min_quantity: float
     max_quantity: float
