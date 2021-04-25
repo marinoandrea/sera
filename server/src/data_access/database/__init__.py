@@ -38,12 +38,18 @@ def db_operation(f: Callable):
             return f(*args, **kwargs)
         except sqla.exc.DBAPIError as e:
 
-            if (isinstance(e.orig, psycopg2.errors.UniqueViolation)):
-                column = e.diag.column_name
+            # UniqueViolation
+            if (isinstance(e.orig, psycopg2.errors.lookup('23505'))):
+                column = e.orig.diag.message_detail\
+                    .split('=')[0]\
+                    .split(' ')[1]\
+                    .replace('(', '')\
+                    .replace(')', '')
                 raise ValidationError(
                     f'This value for \'{column}\' is already present.')
 
             # TODO(andrea): more exceptions should have custom handling
 
             raise DataAccessError from e
+
     return inner
