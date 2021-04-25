@@ -5,7 +5,7 @@ from src.use_cases import register_user
 
 def post_user(req: HTTPRequest) -> HTTPResponse:
     try:
-        auth_token = register_user(
+        user, token = register_user(
             req.body['name'],
             req.body['email'],
             req.body['password'],
@@ -16,5 +16,5 @@ def post_user(req: HTTPRequest) -> HTTPResponse:
 
     return HTTPResponse(
         status=200,
-        body={'auth_token': auth_token}
+        body={'user': user.to_json(), 'token': token}
     )

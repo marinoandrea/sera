@@ -1,4 +1,4 @@
-from typing import Callable
+from typing import Callable, Tuple
 
 from src.entities import User
 from src.plugins.interfaces import AuthManager, PasswordManager
@@ -8,14 +8,14 @@ def build_register_user(
     create_user: Callable[[User], User],
     password_manager: PasswordManager,
     auth_manager: AuthManager
-) -> Callable[[str, str, str, str], str]:
+) -> Callable[[str, str, str, str], Tuple[User, str]]:
 
     def register_user(
         name: str,
         email: str,
         password: str,
         phone_number: str
-    ) -> str:
+    ) -> Tuple[User, str]:
 
         user = User(
             name=name,
@@ -30,7 +30,7 @@ def build_register_user(
         create_user(user)
 
         # automatically login
-        return auth_manager.create_token({
+        return user, auth_manager.create_token({
             "identity": {"id": user.id}
         })
 
