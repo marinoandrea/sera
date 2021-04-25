@@ -4,3 +4,7 @@ class ValidationError(RuntimeError):
 
 class AuthorizationError(RuntimeError):
     pass
+
+
+class DataAccessError(RuntimeError):
+    pass

@@ -2,7 +2,7 @@ from dataclasses import asdict
 from typing import List, Optional
 
 import sqlalchemy as sqla
-from src.data_access.database import engine
+from src.data_access.database import db_operation, engine
 from src.entities import Offering, OfferingAudio
 from typing_extensions import TypedDict
 
@@ -17,6 +17,7 @@ class OfferingData(TypedDict):
     price_per_kg_cfa_cents: int
 
 
+@db_operation
 def retrieve_latest_offerings() -> List[Offering]:
     query = '''
     select *
@@ -33,6 +34,7 @@ def retrieve_latest_offerings() -> List[Offering]:
     return [from_result(o, Offering) for o in offerings]
 
 
+@db_operation
 def retrieve_offering_audios_by_id(ids: List[str]) -> List[OfferingAudio]:
     query = '''
     select *
@@ -51,6 +53,7 @@ class OfferingAudioFilters(TypedDict):
     subcategory: str
 
 
+@db_operation
 def retrieve_offering_audios(
     filters: OfferingAudioFilters
 ) -> List[OfferingAudio]:
@@ -81,6 +84,7 @@ def retrieve_offering_audios(
     return [from_result(a, OfferingAudio) for a in result]
 
 
+@db_operation
 def create_offering(offering: Offering):
     query = '''
     insert into offering (
@@ -108,6 +112,7 @@ def create_offering(offering: Offering):
     engine.execute(sqla.text(query), asdict(offering))
 
 
+@db_operation
 def create_offering_audio(offering_audio: OfferingAudio):
     query = '''
     insert into offering_audio (
@@ -138,6 +143,7 @@ class OfferingFilters(TypedDict):
     subcategory: str
 
 
+@db_operation
 def retrieve_offerings(filters: OfferingFilters) -> List[Offering]:
 
     params: OfferingFilters = {

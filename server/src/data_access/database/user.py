@@ -2,7 +2,7 @@ from dataclasses import asdict
 from typing import Any, List, Mapping, Optional
 
 import sqlalchemy as sqla
-from src.data_access.database import engine, get_cursor
+from src.data_access.database import db_operation, engine, get_cursor
 from src.entities import User
 from typing_extensions import TypedDict
 
@@ -18,6 +18,7 @@ class UserData(TypedDict):
     password: str
 
 
+@db_operation
 def retrieve_user_by_id(id: str) -> Optional[User]:
     query = '''
     select *
@@ -29,6 +30,7 @@ def retrieve_user_by_id(id: str) -> Optional[User]:
     return from_result(result, User) if result else None
 
 
+@db_operation
 def retrieve_user_by_email(email: str) -> Optional[User]:
     query = '''
     select *
@@ -40,6 +42,7 @@ def retrieve_user_by_email(email: str) -> Optional[User]:
     return from_result(result, User) if result else None
 
 
+@db_operation
 def retrieve_user_by_phone_number(phone_number: str) -> Optional[User]:
     query = '''
     select *
@@ -51,6 +54,7 @@ def retrieve_user_by_phone_number(phone_number: str) -> Optional[User]:
     return from_result(result, User) if result else None
 
 
+@db_operation
 def retrieve_users_by_id(ids: List[str]) -> List[User]:
     query = '''
     select *
@@ -62,6 +66,7 @@ def retrieve_users_by_id(ids: List[str]) -> List[User]:
     return [from_result(u, User) for u in results]
 
 
+@db_operation
 def create_user(data: User) -> User:
     query = '''
     insert into user_account (
@@ -91,6 +96,7 @@ def create_user(data: User) -> User:
     return from_result(result, User)  # type: ignore
 
 
+@db_operation
 def delete_user(id: str):
     query = '''
     delete from user_account
@@ -99,6 +105,7 @@ def delete_user(id: str):
     engine.execute(sqla.text(query), {'id': id})
 
 
+@db_operation
 def update_user(id: str, data: UserData) -> User:
     def _parse_args() -> str:
         out = ''
